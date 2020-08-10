@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "rules": {
+        "import/extensions": ["error", "always"],
+        "indent": ["error", 4],
+        "linebreak-style": 0,
+        "lines-between-class-members": ["error", "always", {"exceptAfterSingleLine": true}],
+        "no-plusplus": "off",
+        "no-underscore-dangle": ["error", {"allowAfterThis": true}]
+    }
+}
