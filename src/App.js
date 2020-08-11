@@ -1,10 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Controls from './components/Controls.js';
+import TrackList from './components/TrackList.js';
 
 function App() {
   return (
     <div className="App">
+      <TrackList>
+        TrackList is here
+      </TrackList>
+      <Controls>
+        Controls are here
+      </Controls>
     </div>
   );
 }
