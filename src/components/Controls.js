@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
 class Controls extends Component {
-    render() {
+    static render() {
         return (
-            <div className="control">
+            <div className="controls">
                 Controls here
             </div>
-        )
+        );
     }
 }
+
+export default Controls;
