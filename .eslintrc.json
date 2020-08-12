@@ -9,6 +9,7 @@
         "plugin:react/recommended"
     ],
     "rules": {
+        "class-methods-use-this": ["error", {"exceptMethods": ["render"]}],
         "import/extensions": ["error", "always"],
         "indent": ["error", 4],
         "linebreak-style": 0,

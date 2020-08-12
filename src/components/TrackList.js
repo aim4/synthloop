@@ -3,10 +3,12 @@ import Track from './Track.js';
 
 class TrackList extends Component {
     state = {
-        tracks: [],
+        tracks: [{
+            id: 0,
+        }],
     }
 
-    static render() {
+    render() {
         return (
             <div className="track-list">
                 {

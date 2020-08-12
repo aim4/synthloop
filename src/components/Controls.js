@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Controls extends Component {
-    static render() {
+    render() {
         return (
             <div className="controls">
                 Controls here

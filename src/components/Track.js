@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import Pad from './Pad.js';
+import * as CONST from '../constants.js';
 
 class Track extends Component {
-    state = {
-        instrument: undefined,
-        volumePercent: 1.0,
-        soundFile: null,
+    constructor(props) {
+        super(props);
+        console.log(props.track);
+        this.state = {
+            instrument: undefined,
+            volumePercent: 1.0,
+            soundFile: null,
+        };
     }
 
     play() {
@@ -15,11 +21,18 @@ class Track extends Component {
         // TODO: change volume in state to new volume percent
     }
 
-    static render() {
+    render() {
+        const pads = [];
+        for (let i = 0; i < CONST.NUM_PADS_PER_TRACK; i++) {
+            pads.push((
+                <Pad key={i}></Pad>
+            ));
+        }
+
         return (
             <div className="track">
                 A single track
-                {/* Create row of pads */}
+                {pads}
             </div>
         );
     }
