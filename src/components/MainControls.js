@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Controls extends Component {
+class MainControls extends Component {
     render() {
         return (
-            <div className="controls">
+            <div className="main-controls">
                 Controls here
             </div>
         );
     }
 }
 
-export default Controls;
+export default MainControls;

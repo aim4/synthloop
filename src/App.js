@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/App.css';
 import './css/styles.css';
-import Controls from './components/Controls.js';
+import MainControls from './components/MainControls.js';
 import TrackList from './components/TrackList.js';
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
             <TrackList>
                 TrackList is here
             </TrackList>
-            <Controls>
+            <MainControls>
                 Controls are here
-            </Controls>
+            </MainControls>
             <button className="pure-button">This is a test button</button>
         </div>
     );
