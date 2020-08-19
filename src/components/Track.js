@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pad from './Pad.js';
+import Bar from './Bar.js';
 import * as CONST from '../constants.js';
 
 class Track extends Component {
@@ -22,17 +22,17 @@ class Track extends Component {
     }
 
     render() {
-        const pads = [];
-        for (let i = 0; i < CONST.NUM_PADS_PER_TRACK; i++) {
-            pads.push((
-                <Pad key={i}></Pad>
+        const bars = [];
+        for (let i = 0; i < CONST.NUM_BARS_PER_TRACK; i++) {
+            bars.push((
+                <Bar key={i}></Bar>
             ));
         }
 
         return (
             <div className="track">
                 A single track
-                {pads}
+                {bars}
             </div>
         );
     }
