@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Pad.css';
 
 class Pad extends Component {
     state = {
@@ -15,8 +16,9 @@ class Pad extends Component {
     render() {
         // TODO add pad-active class if pad is active
         return (
-            <div className="pad">
-                I am a pad
+            <div className="Pad">
+                <span>I am a pad</span>
+                {/* I am a pad */}
             </div>
         );
     }

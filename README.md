@@ -1,3 +1,9 @@
+## Notes
+
+I tried to use Pure.css's grid, but it was squishing the text. I decided to just use Flexbox instead of trying to fix the grid. Other components from Pure.css seem to be working fine.
+
+Below is the default README generated from create-react-app.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

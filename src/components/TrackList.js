@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Track from './Track.js';
+import '../css/TrackList.css';
 
 class TrackList extends Component {
     state = {
@@ -10,7 +11,7 @@ class TrackList extends Component {
 
     render() {
         return (
-            <div className="track-list">
+            <div className={'TrackList'}>
                 {
                     this.state.tracks.map((track) => (
                         <Track track={track} key={track.id}></Track>

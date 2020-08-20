@@ -1,0 +1,5 @@
+.Pad {
+    min-width: 4rem;
+    min-height: 4rem;
+    border: 2px solid orange;
+}

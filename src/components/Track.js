@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Bar from './Bar.js';
+import TrackControls from './TrackControls.js';
 import * as CONST from '../constants.js';
+import '../css/Track.css';
 
 class Track extends Component {
     constructor(props) {
@@ -30,8 +32,9 @@ class Track extends Component {
         }
 
         return (
-            <div className="track">
+            <div className={'Track'}>
                 A single track
+                <TrackControls></TrackControls>
                 {bars}
             </div>
         );
