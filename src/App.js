@@ -8,7 +8,6 @@ function App() {
             <TrackList>
                 TrackList is here
             </TrackList>
-            <button className="pure-button">This is a test button</button>
         </div>
     );
 }

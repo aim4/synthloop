@@ -1,6 +1,16 @@
 ## Notes
 
+Update (most to least recent):
+
+I decided to switch from Pure.css to Milligram. Milligram has a more minimalistic, clean look to me. The aesthetic was my main deciding factor.
+(Other factors like size and update-activity are roughly the same, according to https://www.webfx.com/blog/web-design/small-css-frameworks/)
+
+---
+
 I tried to use Pure.css's grid, but it was squishing the text. I decided to just use Flexbox instead of trying to fix the grid. Other components from Pure.css seem to be working fine.
+
+---
+
 
 Below is the default README generated from create-react-app.
 
