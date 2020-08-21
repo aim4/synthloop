@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Bar from './Bar.js';
 import TrackControls from './TrackControls.js';
 import * as CONST from '../constants.js';
@@ -36,8 +37,18 @@ class Track extends Component {
                 A single track
                 <TrackControls></TrackControls>
                 {bars}
+                <button onClick={() => this.props.deleteTrack(this.props.track.id)}>
+                    Delete track
+                </button>
             </div>
         );
+    }
+
+    static get propTypes() {
+        return {
+            track: PropTypes.object,
+            deleteTrack: PropTypes.func,
+        };
     }
 }
 
