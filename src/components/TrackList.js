@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MainControls from './MainControls.js';
 import Track from './Track.js';
 import '../css/TrackList.css';
 
@@ -37,6 +38,7 @@ class TrackList extends Component {
                 <button onClick={this.addTrack}>
                     Add Track
                 </button>
+                <MainControls></MainControls>
             </div>
         );
     }
