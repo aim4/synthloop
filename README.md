@@ -1,16 +1,73 @@
+# synthloop
 ## Notes
 
+* These notes are for both updates and learning purposes. I'm using them to log what I struggled with and learned, so I can refer back to them if I ever go through the same problem in the future (and forgot what I did). Some things may seem very obvious here, but that's the best way to learn.
+
+
 Update (most to least recent):
+
+On sounds:
+
+It took me a long time to figure out how to play sound in a React app (specifically, mp3 files). A lot of stackoverflow posts were outdated or in plain JS (not using React).
+
+Environment I'm using: Firefox, React (also checked in Chrome),
+
+I tried using the Audio element in JS
+
+`const audio = new Audio(filepath);`
+
+and also creating a DOM audio element (something like the code below)
+
+```
+const audio = document.createElement('audio');
+audio.style.display = 'none';
+audio.src = filepath;
+document.appendChild(audio);
+
+```
+
+I would keep getting errors like `HTTP “Content-Type” of “text/html” is not supported.`, in Firefox. While I read in many posts that mp3 was not supported by Firefox, this is outdated - Firefox (depends on version and OS, but if you have the latest version and using modern OS like Windows VIsta+ it shouldn't be a problem) now supports mp3 and should be able to play mp3 files. I wanted to strictly use mp3 files, because I didn't want to go through the trouble of finding .ogg files (which has been supported by Firefox much longer) or convert audio (that would cause a legal issue since I'm using free-to-use sound effects).
+
+I found that importing the sound file directly worked:
+
+```
+import bubbles from './bubbles.mp3';
+
+const audio = new Audio(bubbles);
+audio.play();
+```
+
+but this doesn't work if I have dynamic filepaths (the user can change which sound file to use). Also, it's not very pretty to have to import audio files directly in JS.
+
+
+I decided to focus on this error: `HTTP “Content-Type” of “text/html” is not supported.` (was also getting some errors related to not being able to decode "text/html"). It told me for some reason, the browser couldn't read the file format I was sending or wasn't able to properly load it - even though I know Firefox can play mp3 files (from using that `import bubbles` method above).
+
+It turns out that you need a special file loader, like Webpack, to load mp3 files. I don't yet understand the specifics of this, or how to use Webpack, but I do know that React does this for you if you put the non-html/css/js files you want to use in the public/ folder of the React app.
+
+I also didn't realize that to refer to the public folder, you just started a filepath with a backslash ("/file.mp3"). In my case, I've not put my sounds in a `sound` folder under `public`, so when I play audio, it looks something like this:
+
+```
+const audio = new Audio('/sounds/bubbles1.mp3');
+audio.play();
+```
+
+Ta-da! Sound in a React app!
+---
+
+On CSS:
 
 I decided to switch from Pure.css to Milligram. Milligram has a more minimalistic, clean look to me. The aesthetic was my main deciding factor.
 (Other factors like size and update-activity are roughly the same, according to https://www.webfx.com/blog/web-design/small-css-frameworks/)
 
 ---
 
+On CSS:
+
 I tried to use Pure.css's grid, but it was squishing the text. I decided to just use Flexbox instead of trying to fix the grid. Other components from Pure.css seem to be working fine.
 
 ---
 
+See credits at the bottom for sound effects.
 
 Below is the default README generated from create-react-app.
 
@@ -82,4 +139,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# synthloop
+
+# Credits
+
+Sound effects obtained from https://freesound.org/

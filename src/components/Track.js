@@ -8,16 +8,21 @@ import '../css/Track.css';
 class Track extends Component {
     constructor(props) {
         super(props);
-        console.log(props.track);
+        this.soundFilePath = CONST.DEFAULT_SOUND_FILE_PATH;
         this.state = {
-            instrument: undefined,
-            volumePercent: 1.0,
-            soundFile: null,
+            instrument: CONST.DEFAULT_INSTRUMENT,
+            volume: CONST.DEFAULT_VOLUME,
         };
+        this.setAudio();
     }
 
-    play() {
+    setAudio() {
+        this.audio = new Audio(CONST.DEFAULT_SOUND_FILE_PATH);
+    }
+
+    play = () => {
         console.log(`Play sound of ${this.state.instrument}`);
+        this.audio.play();
     }
 
     changeVolume(percent) {
@@ -40,6 +45,7 @@ class Track extends Component {
                 <button onClick={() => this.props.deleteTrack(this.props.track.id)}>
                     Delete track
                 </button>
+                <button onClick={this.play}>Play</button>
             </div>
         );
     }

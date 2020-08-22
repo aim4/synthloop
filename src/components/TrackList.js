@@ -41,6 +41,7 @@ class TrackList extends Component {
 
     togglePlay = () => {
         this.setState({ isPlaying: !this.state.isPlaying });
+        // Play each track
     }
 
     render() {
