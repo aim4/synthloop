@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MainControls from './MainControls.js';
 import Track from './Track.js';
+import * as CONST from '../constants.js';
 import '../css/TrackList.css';
 
 class TrackList extends Component {
@@ -10,6 +11,9 @@ class TrackList extends Component {
             tracks: [{
                 id: 0,
             }],
+            bpm: CONST.DEFAULT_BPM,
+            volume: CONST.DEFAULT_VOLUME,
+            isPlaying: false,
         };
     }
 
@@ -27,6 +31,18 @@ class TrackList extends Component {
         });
     }
 
+    onBPMChange = (e) => {
+        this.setState({ bpm: e.target.value });
+    }
+
+    onVolumeChange = (e) => {
+        this.setState({ volume: e.target.value });
+    }
+
+    togglePlay = () => {
+        this.setState({ isPlaying: !this.state.isPlaying });
+    }
+
     render() {
         return (
             <div className={'TrackList'}>
@@ -38,7 +54,13 @@ class TrackList extends Component {
                 <button onClick={this.addTrack}>
                     Add Track
                 </button>
-                <MainControls></MainControls>
+                <MainControls
+                    bpm={this.state.bpm}
+                    volume={this.state.volume}
+                    onBPMChange={this.onBPMChange}
+                    onVolumeChange={this.onVolumeChange}
+                    togglePlay={this.togglePlay}>
+                </MainControls>
             </div>
         );
     }

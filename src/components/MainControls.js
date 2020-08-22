@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class MainControls extends Component {
     constructor(props) {
@@ -20,19 +21,30 @@ class MainControls extends Component {
     render() {
         return (
             <div className="MainControls">
-                Controls here
+                <button id="play-button" onClick={this.props.togglePlay}>Play</button>
+                <button id="stop-button">Stop</button>
                 <div className="slide-container">
                     <label htmlFor="volume">Volume</label>
-                    <input type="range" min="0" max="100" value={this.state.volume} step="1" className="slider" name="volume" onChange={this.onVolumeChange}></input>
-                    <output name="volume-output" htmlFor="volume">{this.state.volume}</output>
+                    <input type="range" min="0" max="100" value={this.props.volume} step="1" className="slider" name="volume" onChange={this.props.onVolumeChange}></input>
+                    <output name="volume-output" htmlFor="volume">{this.props.volume}</output>
                 </div>
                 <div className="slide-container">
                     <label htmlFor="bpm">Beats Per Minute</label>
-                    <input type="range" min="0" max="160" value={this.state.bpm} step="10" className="slider" name="bpm" onChange={this.onBPMChange}></input>
-                    <output name="bpm-output" htmlFor="bpm">{this.state.bpm}</output>
+                    <input type="range" min="0" max="160" value={this.props.bpm} step="10" className="slider" name="bpm" onChange={this.props.onBPMChange}></input>
+                    <output name="bpm-output" htmlFor="bpm">{this.props.bpm}</output>
                 </div>
             </div>
         );
+    }
+
+    static get propTypes() {
+        return {
+            bpm: PropTypes.number,
+            volume: PropTypes.number,
+            onBPMChange: PropTypes.func,
+            onVolumeChange: PropTypes.func,
+            togglePlay: PropTypes.func,
+        };
     }
 }
 
