@@ -32,11 +32,11 @@ class TrackList extends Component {
     }
 
     onBPMChange = (e) => {
-        this.setState({ bpm: e.target.value });
+        this.setState({ bpm: parseInt(e.target.value, 10) });
     }
 
     onVolumeChange = (e) => {
-        this.setState({ volume: e.target.value });
+        this.setState({ volume: parseInt(e.target.value, 10) });
     }
 
     togglePlay = () => {

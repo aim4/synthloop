@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as CONST from '../constants.js';
 
 class MainControls extends Component {
+    // TODO: add another prop to set controls to horizontal vs vertical layout
     constructor(props) {
         super(props);
         this.state = {
-            volume: 100,
-            bpm: 120,
+            volume: CONST.DEFAULT_VOLUME,
+            bpm: CONST.DEFAULT_BPM,
         };
     }
 
+    // TODO: remove onVolumeChange and onBPMChange and use props'
     onVolumeChange = (e) => {
         this.setState({ volume: e.target.value });
     }
@@ -20,7 +23,7 @@ class MainControls extends Component {
 
     render() {
         return (
-            <div className="MainControls">
+            <div className="Controls">
                 <button id="play-button" onClick={this.props.togglePlay}>Play</button>
                 <button id="stop-button">Stop</button>
                 <div className="slide-container">

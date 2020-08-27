@@ -20,13 +20,18 @@ class Track extends Component {
         this.audio = new Audio(CONST.DEFAULT_SOUND_FILE_PATH);
     }
 
+    // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     play = () => {
         console.log(`Play sound of ${this.state.instrument}`);
         this.audio.play();
     }
 
-    changeVolume(percent) {
-        // TODO: change volume in state to new volume percent
+    onVolumeChange = (e) => {
+        this.setState({ volume: parseInt(e.target.value, 10) });
+    }
+
+    onInstrumentChange = (e) => {
+        console.log(e.target.value);
     }
 
     render() {
@@ -40,7 +45,11 @@ class Track extends Component {
         return (
             <div className={'Track'}>
                 A single track
-                <TrackControls></TrackControls>
+                <TrackControls
+                    volume={this.state.volume}
+                    onVolumeChange={this.onVolumeChange}
+                    onInstrumentChange={this.onInstrumentChange}>
+                </TrackControls>
                 {bars}
                 <button onClick={() => this.props.deleteTrack(this.props.track.id)}>
                     Delete track
