@@ -8,21 +8,20 @@ import '../css/Track.css';
 class Track extends Component {
     constructor(props) {
         super(props);
-        this.soundFilePath = CONST.DEFAULT_SOUND_FILE_PATH;
         this.state = {
             instrument: CONST.DEFAULT_INSTRUMENT,
             volume: CONST.DEFAULT_VOLUME,
         };
-        this.setAudio();
+        this.setAudio(this.state.instrument);
     }
 
-    setAudio() {
-        this.audio = new Audio(CONST.DEFAULT_SOUND_FILE_PATH);
+    setAudio(instrument) {
+        const filepath = `${CONST.SOUND_PATH}/${instrument}.${CONST.SOUND_EXT}`;
+        this.audio = new Audio(filepath);
     }
 
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     play = () => {
-        console.log(`Play sound of ${this.state.instrument}`);
         this.audio.play();
     }
 
@@ -31,7 +30,8 @@ class Track extends Component {
     }
 
     onInstrumentChange = (e) => {
-        console.log(e.target.value);
+        this.setState({ instrument: e.target.value });
+        this.setAudio(e.target.value);
     }
 
     render() {

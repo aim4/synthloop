@@ -7,23 +7,11 @@ class TrackControls extends Component {
     constructor(props) {
         // TODO: add pitch
         super(props);
-        this.state = {
-            volume: CONST.DEFAULT_VOLUME,
-            instrument: CONST.DEFAULT_INSTRUMENT,
-        };
         this.init();
     }
 
     init() {
         this.instruments = CONST.INSTRUMENT_OPTIONS;
-    }
-
-    onVolumeChange = (e) => {
-        this.setState({ volume: e.target.value });
-    }
-
-    onInstrumentChange = (e) => {
-        this.setState({ instrument: e.target.value });
     }
 
     render() {
