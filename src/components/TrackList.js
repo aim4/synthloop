@@ -41,7 +41,6 @@ class TrackList extends Component {
 
     togglePlay = () => {
         this.setState({ isPlaying: !this.state.isPlaying });
-        // Play each track
     }
 
     render() {
@@ -49,7 +48,7 @@ class TrackList extends Component {
             <div className={'TrackList'}>
                 {
                     this.state.tracks.map((track) => (
-                        <Track track={track} key={track.id} deleteTrack={this.deleteTrack}></Track>
+                        <Track track={track} key={track.id} deleteTrack={this.deleteTrack} masterVolume={this.state.volume}></Track>
                     ))
                 }
                 <button onClick={this.addTrack}>

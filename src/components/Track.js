@@ -21,7 +21,7 @@ class Track extends Component {
     }
 
     changeVolume(v) {
-        this.audio.volume = v / CONST.MAX_VOLUME;
+        this.audio.volume = (v / CONST.MAX_VOLUME) * (this.props.masterVolume / CONST.MAX_VOLUME);
     }
 
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
@@ -38,6 +38,12 @@ class Track extends Component {
     onInstrumentChange = (e) => {
         this.setState({ instrument: e.target.value });
         this.setAudio(e.target.value);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.masterVolume !== prevState.masterVolume) {
+            this.changeVolume(this.state.volume);
+        }
     }
 
     render() {
@@ -69,6 +75,7 @@ class Track extends Component {
         return {
             track: PropTypes.object,
             deleteTrack: PropTypes.func,
+            masterVolume: PropTypes.number,
         };
     }
 }
