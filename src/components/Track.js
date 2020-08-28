@@ -20,13 +20,19 @@ class Track extends Component {
         this.audio = new Audio(filepath);
     }
 
+    changeVolume(v) {
+        this.audio.volume = v / 100;
+    }
+
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     play = () => {
         this.audio.play();
     }
 
     onVolumeChange = (e) => {
-        this.setState({ volume: parseInt(e.target.value, 10) });
+        const volume = parseInt(e.target.value, 10);
+        this.setState({ volume });
+        this.changeVolume(volume);
     }
 
     onInstrumentChange = (e) => {
