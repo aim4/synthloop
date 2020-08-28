@@ -21,7 +21,7 @@ class Track extends Component {
     }
 
     changeVolume(v) {
-        this.audio.volume = v / 100;
+        this.audio.volume = v / CONST.MAX_VOLUME;
     }
 
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
