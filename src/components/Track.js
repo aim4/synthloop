@@ -11,6 +11,9 @@ class Track extends Component {
         this.state = {
             instrument: CONST.DEFAULT_INSTRUMENT,
             volume: CONST.DEFAULT_VOLUME,
+            bpm: CONST.DEFAULT_BPM,
+            pos: 0,
+            // get bpm from props, not state
         };
         this.setAudio(this.state.instrument);
     }
@@ -38,6 +41,12 @@ class Track extends Component {
     onInstrumentChange = (e) => {
         this.setState({ instrument: e.target.value });
         this.setAudio(e.target.value);
+    }
+
+    onBPMChange = (e) => {
+        const bpm = parseInt(e.target.value, 10);
+        this.setState({ bpm });
+        // change bpm of interval
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -76,6 +85,7 @@ class Track extends Component {
             track: PropTypes.object,
             deleteTrack: PropTypes.func,
             masterVolume: PropTypes.number,
+            bpm: PropTypes.number,
         };
     }
 }

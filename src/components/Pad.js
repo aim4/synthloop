@@ -16,9 +16,8 @@ class Pad extends Component {
     render() {
         // TODO add pad-active class if pad is active
         return (
-            <div className="Pad">
+            <div className={this.state.active ? 'Pad active' : 'Pad'} onClick={this.toggle.bind(this)}>
                 <span>I am a pad</span>
-                {/* I am a pad */}
             </div>
         );
     }
