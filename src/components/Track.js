@@ -15,8 +15,10 @@ class Track extends Component {
         this.state = {
             instrument: CONST.DEFAULT_INSTRUMENT,
             volume: CONST.DEFAULT_VOLUME,
-            pos: 0,
+            pads: Array(CONST.NUM_BARS_PER_TRACK * CONST.NUM_PADS_PER_BAR).fill(false),
+            // pos: 0,
         };
+        this.pos = 0;
         this.timerId = null;
         this.setAudio();
     }
@@ -41,7 +43,14 @@ class Track extends Component {
 
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     play = () => {
-        this.audio.play();
+        console.log(this.pos);
+        // TODO: only play sound if pad is active
+        // TODO: sound might not be fast enough? (1 second too long)
+        if (this.state.pads[this.pos]) {
+            this.audio.play();
+        }
+
+        this.pos = (this.pos + 1) % (CONST.NUM_BARS_PER_TRACK * CONST.NUM_PADS_PER_BAR);
     }
 
     onVolumeChange = (e) => {
@@ -55,10 +64,10 @@ class Track extends Component {
         this.setAudio(e.target.value);
     }
 
-    onBPMChange = (e) => {
-        const bpm = parseInt(e.target.value, 10);
-        this.setState({ bpm });
-        // change bpm of interval
+    onPadChange = (id, isActive) => {
+        const pads = [...this.state.pads];
+        pads[id] = isActive;
+        this.setState({ pads });
     }
 
     mustResetTimer(prevState) {
@@ -83,7 +92,7 @@ class Track extends Component {
         const bars = [];
         for (let i = 0; i < CONST.NUM_BARS_PER_TRACK; i++) {
             bars.push((
-                <Bar key={i}></Bar>
+                <Bar key={i} id={i} onPadChange={this.onPadChange}></Bar>
             ));
         }
 

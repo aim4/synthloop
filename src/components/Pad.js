@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../css/Pad.css';
 
 class Pad extends Component {
@@ -7,10 +8,10 @@ class Pad extends Component {
     }
 
     toggle() {
-        const state = {
-            active: !this.state.active,
-        };
+        const active = !this.state.active;
+        const state = { active };
         this.setState(state);
+        this.props.onPadChange(this.props.id, active);
     }
 
     render() {
@@ -20,6 +21,13 @@ class Pad extends Component {
                 <span>I am a pad</span>
             </div>
         );
+    }
+
+    static get propTypes() {
+        return {
+            id: PropTypes.number,
+            onPadChange: PropTypes.func,
+        };
     }
 }
 
