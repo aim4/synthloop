@@ -5,22 +5,34 @@ import TrackControls from './TrackControls.js';
 import * as CONST from '../constants.js';
 import '../css/Track.css';
 
+function calculateTempo(bpm) {
+    return CONST.MILLISECONDS_IN_SEC / bpm;
+}
+
 class Track extends Component {
     constructor(props) {
         super(props);
         this.state = {
             instrument: CONST.DEFAULT_INSTRUMENT,
             volume: CONST.DEFAULT_VOLUME,
-            bpm: CONST.DEFAULT_BPM,
             pos: 0,
-            // get bpm from props, not state
         };
-        this.setAudio(this.state.instrument);
+        this.timerId = null;
+        this.setAudio();
     }
 
-    setAudio(instrument) {
-        const filepath = `${CONST.SOUND_PATH}/${instrument}.${CONST.SOUND_EXT}`;
+    setAudio() {
+        const filepath = `${CONST.SOUND_PATH}/${this.state.instrument}.${CONST.SOUND_EXT}`;
         this.audio = new Audio(filepath);
+    }
+
+    setTimer() {
+        if (this.props.isPlaying && !this.timerId) {
+            this.timerId = setInterval(
+                this.play,
+                calculateTempo(this.props.bpm),
+            );
+        }
     }
 
     changeVolume(v) {
@@ -49,9 +61,21 @@ class Track extends Component {
         // change bpm of interval
     }
 
+    mustResetTimer(prevState) {
+        return (this.props.isPlaying !== prevState.isPlaying || this.props.bpm !== prevState.bpm);
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.masterVolume !== prevState.masterVolume) {
             this.changeVolume(this.state.volume);
+        }
+
+        if (this.mustResetTimer(prevState)) {
+            while (this.timerId) {
+                clearInterval(this.timerId);
+                this.timerId = null;
+            }
+            this.setTimer();
         }
     }
 
@@ -83,9 +107,10 @@ class Track extends Component {
     static get propTypes() {
         return {
             track: PropTypes.object,
-            deleteTrack: PropTypes.func,
-            masterVolume: PropTypes.number,
+            isPlaying: PropTypes.bool,
             bpm: PropTypes.number,
+            masterVolume: PropTypes.number,
+            deleteTrack: PropTypes.func,
         };
     }
 }

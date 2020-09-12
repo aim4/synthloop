@@ -25,6 +25,7 @@ class MainControls extends Component {
         return (
             <div className="Controls">
                 <button id="play-button" onClick={this.props.togglePlay}>Play</button>
+                {/* TODO: make this turn into stop instead of having two buttons */}
                 <button id="stop-button">Stop</button>
                 <div className="slide-container">
                     <label htmlFor="volume">Volume</label>

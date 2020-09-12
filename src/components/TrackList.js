@@ -44,11 +44,19 @@ class TrackList extends Component {
     }
 
     render() {
+        console.log(this.state.tracks);
         return (
             <div className={'TrackList'}>
                 {
                     this.state.tracks.map((track) => (
-                        <Track track={track} key={track.id} deleteTrack={this.deleteTrack} masterVolume={this.state.volume}></Track>
+                        <Track
+                            track={track}
+                            key={track.id}
+                            isPlaying={this.state.isPlaying}
+                            bpm={this.state.bpm}
+                            masterVolume={this.state.volume}
+                            deleteTrack={this.deleteTrack}>
+                        </Track>
                     ))
                 }
                 <button onClick={this.addTrack}>
