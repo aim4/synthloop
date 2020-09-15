@@ -66,6 +66,7 @@ class Track extends Component {
     }
 
     shouldPlaySound(prevProps) {
+        console.log('Track', this.props.pos, prevProps.pos);
         return (this.props.pos !== prevProps.pos);
     }
 

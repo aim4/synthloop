@@ -70,7 +70,7 @@ class TrackList extends Component {
             this.timerId = setInterval(() => {
                 const totalPads = CONST.NUM_BARS_PER_TRACK * CONST.NUM_PADS_PER_BAR;
                 const pos = (this.state.pos + 1) % totalPads;
-                console.log(pos);
+                console.log('TrackList', pos);
                 this.setState({ pos });
             },
             calculateTempo(this.state.bpm));

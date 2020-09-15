@@ -15,7 +15,6 @@ class Pad extends Component {
     }
 
     play() {
-        // TODO: get rid of play in Track
         this.setState({ isPlaying: true });
     }
 
@@ -24,8 +23,8 @@ class Pad extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.pos && this.props.pos !== prevProps.pos) {
-            console.log(this.props.pos, prevProps.pos);
+        if (this.props.pos !== prevProps.pos) {
+            console.log('Pad', this.props.pos, prevProps.pos);
             if (this.props.pos === this.props.id) {
                 this.play();
             } else {
