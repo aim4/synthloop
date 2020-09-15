@@ -16,9 +16,8 @@ class Track extends Component {
             instrument: CONST.DEFAULT_INSTRUMENT,
             volume: CONST.DEFAULT_VOLUME,
             pads: Array(CONST.NUM_BARS_PER_TRACK * CONST.NUM_PADS_PER_BAR).fill(false),
-            // pos: 0,
         };
-        this.pos = 0;
+
         this.timerId = null;
         this.setAudio();
     }
@@ -26,6 +25,7 @@ class Track extends Component {
     setAudio() {
         const filepath = `${CONST.SOUND_PATH}/${this.state.instrument}.${CONST.SOUND_EXT}`;
         this.audio = new Audio(filepath);
+        this.audio.playbackRate = 2;
     }
 
     setTimer() {
@@ -43,14 +43,9 @@ class Track extends Component {
 
     // Audio properties: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     play = () => {
-        console.log(this.pos);
-        // TODO: only play sound if pad is active
-        // TODO: sound might not be fast enough? (1 second too long)
-        if (this.state.pads[this.pos]) {
+        if (this.state.pads[this.props.pos]) {
             this.audio.play();
         }
-
-        this.pos = (this.pos + 1) % (CONST.NUM_BARS_PER_TRACK * CONST.NUM_PADS_PER_BAR);
     }
 
     onVolumeChange = (e) => {
@@ -70,8 +65,8 @@ class Track extends Component {
         this.setState({ pads });
     }
 
-    mustResetTimer(prevState) {
-        return (this.props.isPlaying !== prevState.isPlaying || this.props.bpm !== prevState.bpm);
+    shouldPlaySound(prevState) {
+        return (this.props.pos !== prevState.pos);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -79,12 +74,8 @@ class Track extends Component {
             this.changeVolume(this.state.volume);
         }
 
-        if (this.mustResetTimer(prevState)) {
-            while (this.timerId) {
-                clearInterval(this.timerId);
-                this.timerId = null;
-            }
-            this.setTimer();
+        if (this.shouldPlaySound(prevState)) {
+            this.play();
         }
     }
 
@@ -115,11 +106,12 @@ class Track extends Component {
 
     static get propTypes() {
         return {
-            track: PropTypes.object,
             isPlaying: PropTypes.bool,
+            pos: PropTypes.number,
             bpm: PropTypes.number,
             masterVolume: PropTypes.number,
             deleteTrack: PropTypes.func,
+            track: PropTypes.object,
         };
     }
 }
