@@ -7,3 +7,11 @@
 .active {
     border: 2px solid cyan;
 }
+
+.play {
+    background-color: hsla(154, 66%, 80%, 0.45);
+}
+
+.play-active {
+    background-color: hsla(154, 66%, 80%, 1);
+}

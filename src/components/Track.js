@@ -65,8 +65,8 @@ class Track extends Component {
         this.setState({ pads });
     }
 
-    shouldPlaySound(prevState) {
-        return (this.props.pos !== prevState.pos);
+    shouldPlaySound(prevProps) {
+        return (this.props.pos !== prevProps.pos);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -74,7 +74,7 @@ class Track extends Component {
             this.changeVolume(this.state.volume);
         }
 
-        if (this.shouldPlaySound(prevState)) {
+        if (this.shouldPlaySound(prevProps)) {
             this.play();
         }
     }
@@ -83,7 +83,7 @@ class Track extends Component {
         const bars = [];
         for (let i = 0; i < CONST.NUM_BARS_PER_TRACK; i++) {
             bars.push((
-                <Bar key={i} id={i} onPadChange={this.onPadChange}></Bar>
+                <Bar key={i} id={i} pos={this.props.pos} onPadChange={this.onPadChange}></Bar>
             ));
         }
 

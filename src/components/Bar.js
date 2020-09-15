@@ -10,7 +10,7 @@ class Bar extends Component {
         const base = this.props.id * CONST.NUM_PADS_PER_BAR;
         for (let i = 0; i < CONST.NUM_PADS_PER_BAR; i++) {
             pads.push((
-                <Pad key={i} id={base + i} className="" onPadChange={this.props.onPadChange}></Pad>
+                <Pad key={i} id={base + i} pos={this.props.pos} className="" onPadChange={this.props.onPadChange}></Pad>
             ));
         }
 
@@ -26,6 +26,7 @@ class Bar extends Component {
     static get propTypes() {
         return {
             id: PropTypes.number,
+            pos: PropTypes.number,
             onPadChange: PropTypes.func,
         };
     }
