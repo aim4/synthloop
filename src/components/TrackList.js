@@ -65,6 +65,7 @@ class TrackList extends Component {
                 <MainControls
                     bpm={this.state.bpm}
                     volume={this.state.volume}
+                    isPlaying={this.state.isPlaying}
                     onBPMChange={this.onBPMChange}
                     onVolumeChange={this.onVolumeChange}
                     togglePlay={this.togglePlay}>
