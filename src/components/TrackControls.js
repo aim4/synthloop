@@ -18,11 +18,6 @@ class TrackControls extends Component {
     render() {
         return (
             <div className="TrackControls">
-                <div className="slide-container">
-                    <label htmlFor="volume">Volume</label>
-                    <input type="range" min="0" max="100" orient="vertical" value={this.props.volume} step="1" className="slider" name="volume" onChange={this.props.onVolumeChange}></input>
-                    <output name="volume-output" htmlFor="volume">{this.props.volume}</output>
-                </div>
                 <label htmlFor="instrument-selection"></label>
                 <select id="instrucment-selection" onChange={this.props.onInstrumentChange}>
                     {
@@ -31,6 +26,11 @@ class TrackControls extends Component {
                         ))
                     }
                 </select>
+                <div className="slide-container">
+                    <label htmlFor="volume">Volume</label>
+                    <input type="range" min="0" max="100" value={this.props.volume} step="1" className="slider" name="volume" onChange={this.props.onVolumeChange}></input>
+                    <output name="volume-output" htmlFor="volume">{this.props.volume}</output>
+                </div>
             </div>
         );
     }

@@ -90,7 +90,6 @@ class Track extends Component {
 
         return (
             <div className={'Track'}>
-                A single track
                 <TrackControls
                     volume={this.state.volume}
                     onVolumeChange={this.onVolumeChange}
@@ -98,9 +97,8 @@ class Track extends Component {
                 </TrackControls>
                 {bars}
                 <button onClick={() => this.props.deleteTrack(this.props.track.id)}>
-                    Delete track
+                    Delete
                 </button>
-                <button onClick={this.play}>Play</button>
             </div>
         );
     }

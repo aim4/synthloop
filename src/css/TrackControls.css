@@ -1,4 +1,6 @@
 .TrackControls {
     display: flex;
     flex-direction: column;
+    width: 32rem;
+    margin: 1rem;
 }
