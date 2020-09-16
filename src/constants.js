@@ -9,4 +9,4 @@ export const MILLISECONDS_IN_SEC = 60000;
 export const DEFAULT_INSTRUMENT = 'bubble1';
 export const SOUND_PATH = '/sounds';
 export const SOUND_EXT = 'mp3';
-export const INSTRUMENT_OPTIONS = ['bubble1', 'bell1'];
+export const INSTRUMENT_OPTIONS = ['bubble1', 'bell1', 'crush1', 'soda1', 'spray1'];
