@@ -95,7 +95,9 @@ class Track extends Component {
                     onVolumeChange={this.onVolumeChange}
                     onInstrumentChange={this.onInstrumentChange}>
                 </TrackControls>
-                {bars}
+                <div className='bars-container'>
+                    {bars}
+                </div>
                 <button onClick={() => this.props.deleteTrack(this.props.track.id)}>
                     Delete
                 </button>

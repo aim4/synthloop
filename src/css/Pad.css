@@ -1,17 +1,21 @@
 .Pad {
-    min-width: 4rem;
-    min-height: 4rem;
-    border: 2px solid orange;
+    width: 6rem;
+    height: 6rem;
+    margin: 0.15rem;
+    border: 3px solid hsla(203, 89%, 70%, 1);
+    border-radius: 5px;
+    background-color: hsla(203, 89%, 70%, 1);
 }
 
 .active {
-    border: 2px solid cyan;
+    border-color: hsla(91, 89%, 70%, 1);
+    background-color:  hsla(91, 89%, 70%, 1);
 }
 
 .play {
-    background-color: hsla(154, 66%, 80%, 0.45);
+    background-color: hsla(343, 89%, 70%, 0.5);
 }
 
 .play-active {
-    background-color: hsla(154, 66%, 80%, 1);
+    background-color: hsla(343, 89%, 70%, 1);
 }

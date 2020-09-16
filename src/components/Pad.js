@@ -9,6 +9,7 @@ class Pad extends Component {
     }
 
     toggleActive() {
+        console.log('clicked');
         const active = !this.state.active;
         this.setState({ active });
         this.props.onPadChange(this.props.id, active);
@@ -47,7 +48,6 @@ class Pad extends Component {
 
         return (
             <div className={classes.join(' ')} onClick={this.toggleActive.bind(this)}>
-                <span>I am a pad</span>
             </div>
         );
     }

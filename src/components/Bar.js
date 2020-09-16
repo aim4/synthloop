@@ -17,7 +17,6 @@ class Bar extends Component {
         // TODO add pad-active class if pad is active
         return (
             <div className={'Bar'}>
-                I am a bar
                 {pads}
             </div>
         );
