@@ -4,6 +4,7 @@ import * as CONST from '../constants.js';
 import '../css/TrackControls.css';
 
 class TrackControls extends Component {
+    // TODO: change to functional component
     constructor(props) {
         // TODO: add pitch
         super(props);

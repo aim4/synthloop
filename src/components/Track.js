@@ -19,13 +19,13 @@ class Track extends Component {
         };
 
         this.timerId = null;
-        this.setAudio();
+        this.setAudio(this.state.instrument);
     }
 
-    setAudio() {
-        const filepath = `${CONST.SOUND_PATH}/${this.state.instrument}.${CONST.SOUND_EXT}`;
+    setAudio(instrument) {
+        const filepath = `${CONST.SOUND_PATH}/${instrument}.${CONST.SOUND_EXT}`;
         this.audio = new Audio(filepath);
-        this.audio.playbackRate = 2;
+        this.audio.playbackRate = 2 * (this.props.bpm / CONST.DEFAULT_BPM);
     }
 
     setTimer() {
